@@ -1,0 +1,7 @@
+{ "name" : "hydracp"
+, "version" : "0.0.1"
+, "description" : ""
+, "author": "Orlando Vazquez <ovazquez@gmail.com> (http://www.joyent.com)"
+, "lib": "lib"
+, "main": "lib/hydracp"
+}
