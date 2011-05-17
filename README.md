@@ -40,7 +40,7 @@ In the child:
 Running the parent:
 
     $ node parent.js
-    Got data from child ./worker
+    Got data from child ./child
 
     Got data from child In the worker
     Yep got message
@@ -52,7 +52,7 @@ Running the parent:
 
 # DESCRIPTION
 
-The `hydra` library provides a way to lauch child node processes and then send
+The `hydrap` library provides a way to lauch child node processes and then send
 and receive messages. It does not rely on on-disk sockets.
      
 # AUTHOR
