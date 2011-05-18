@@ -1,6 +1,6 @@
 var fork = require('../lib/hydracp').fork;
 
-var child = fork(__dirname + '/child.js');
+var child = fork(__dirname + '/child.js', ['some', 'args']);
 
 child.send({ hello: 'world' });
 

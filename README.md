@@ -6,29 +6,20 @@ hydracp - spawn and communicate with child processes in pure javascript
 
 In the parent:
 
-    var spawn = require('hydracp').spawn;
+    var fork = require('../lib/hydracp').fork;
 
-    spawn('./child', function (child) {
-      child.send({ hello: 'world' });
+    var child = fork(__dirname + '/child.js', ['some', 'args']);
 
-      child.on('message', function (msg) {
-        console.log("Got a message from the little baby");
-        console.dir(msg);
-      });
+    child.send({ hello: 'world' });
 
-      // These work as normal.
-      child.stdout.on('data', function (data) {
-        console.log("Got data from child " + data);    
-      });
-
-      child.stderr.on('data', function (data) {
-        console.log("Got data from child " + data);    
-      });
+    child.on('message', function (msg) {
+      console.log("Got a message from the little baby");
+      console.dir(msg);
     });
 
 In the child:
 
-    console.log("In the worker");
+    console.log("In the child");
     process.on('message', function (msg) {
       console.log("Yep got message");
       console.dir(msg);
@@ -40,28 +31,23 @@ In the child:
 Running the parent:
 
     $ node parent.js
-    Got data from child ./child
-
-    Got data from child In the worker
+    In the child
     Yep got message
-
-    Got data from child { hello: 'world' }
-
+    { hello: 'world' }
     Got a message from the little baby
     { ping: 'pong' }
 
 # DESCRIPTION
 
-The `hydracp` library provides a way to lauch child node processes and then send
-and receive messages. It does not rely on on-disk sockets.
+The `hydracp` library provides a way to lauch child node processes and then send and receive messages. It does not rely on on-disk sockets.
 
 # TODO
 
-- Add ability to create and destroy arbitrary socketpair streams to child processes.
+- Add ability to create and destroy arbitrary socketpair streams to child processes, particularly binary byte streams.
      
 # AUTHOR
 
-Orlando Vazuqez <orlando@gmail.com>
+Orlando Vazquez <orlando@gmail.com> (http://joyent.com)
 
 # LICENSE
 

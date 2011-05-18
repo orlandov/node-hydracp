@@ -1,8 +1,10 @@
-console.log("In the worker");
+console.log("In the child");
+process.send({ ping: 'pong' });
+
 process.on('message', function (msg) {
   console.log("Yep got message");
   console.dir(msg);
   setTimeout(function () {
-    process.send({ ping: 'pong' });
-  }, 1000);
+    process.exit();
+  }, 2000);
 });
