@@ -1,17 +1,10 @@
-var spawn = require('../lib/hydracp').spawn;
+var fork = require('../lib/hydracp').fork;
 
-spawn('./child', function (child) {
-  child.send({ hello: 'world' });
+var child = fork(__dirname + '/child.js');
 
-  child.on('message', function (msg) {
-    console.log("Got a message from the little baby");
-    console.dir(msg);
-  });
+child.send({ hello: 'world' });
 
-  child.stdout.on('data', function (data) {
-    console.log("Got data from child " + data);    
-  });
-  child.stderr.on('data', function (data) {
-    console.log("Got data from child " + data);    
-  });
+child.on('message', function (msg) {
+  console.log("Got a message from the little baby");
+  console.dir(msg);
 });

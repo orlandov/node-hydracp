@@ -52,8 +52,12 @@ Running the parent:
 
 # DESCRIPTION
 
-The `hydrap` library provides a way to lauch child node processes and then send
+The `hydracp` library provides a way to lauch child node processes and then send
 and receive messages. It does not rely on on-disk sockets.
+
+# TODO
+
+- Add ability to create and destroy arbitrary socketpair streams to child processes.
      
 # AUTHOR
 
