@@ -1,5 +1,5 @@
 { "name" : "hydracp"
-, "version" : "0.1.0"
+, "version" : "0.2.0"
 , "description" : ""
 , "author": "Orlando Vazquez <ovazquez@gmail.com> (http://www.joyent.com)"
 , "lib": "lib"
