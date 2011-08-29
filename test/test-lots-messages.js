@@ -5,20 +5,21 @@ var childScript = __dirname + '/fixtures/child-process-echo.js';
 var n = fork(childScript, [4,2,0]);
 
 var messageCount = 0;
-var numMsgs = 100;
+var numMsgs = 1000;
 
 n.on('message', function (m) {
-  assert.deepEqual(message, m);
   ++messageCount;
   if (messageCount == numMsgs) {
     process.exit();
   }
 });
 
-var message = { hello: 'world' };
-
 var i = numMsgs;
 
+var arr = new Array(500).join('world');
+
 while (i--) {
+  var message = {};
+  message["hello"+i] = arr;
   n.send(message);
 }
